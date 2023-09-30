@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Trajet;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class Trajet1Type extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('villeDepart')
+            ->add('villeArrive')
+            ->add('dateDepart')
+            ->add('dateArrive')
+            ->add('heureDepart')
+            ->add('heureArrive')
+            ->add('typeBus')
+            ->add('user')
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Trajet::class,
+        ]);
+    }
+}

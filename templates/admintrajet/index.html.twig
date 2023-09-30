@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trajet index{% endblock %}
+
+{% block body %}
+    <h1>Trajet index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>VilleDepart</th>
+                <th>VilleArrive</th>
+                <th>DateDepart</th>
+                <th>DateArrive</th>
+                <th>HeureDepart</th>
+                <th>HeureArrive</th>
+                <th>TypeBus</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trajet in trajets %}
+            <tr>
+                <td>{{ trajet.id }}</td>
+                <td>{{ trajet.villeDepart }}</td>
+                <td>{{ trajet.villeArrive }}</td>
+                <td>{{ trajet.dateDepart ? trajet.dateDepart|date('Y-m-d') : '' }}</td>
+                <td>{{ trajet.dateArrive ? trajet.dateArrive|date('Y-m-d') : '' }}</td>
+                <td>{{ trajet.heureDepart ? trajet.heureDepart|date('H:i:s') : '' }}</td>
+                <td>{{ trajet.heureArrive ? trajet.heureArrive|date('H:i:s') : '' }}</td>
+                <td>{{ trajet.typeBus }}</td>
+                <td>
+                    <a href="{{ path('app_admintrajet_show', {'id': trajet.id}) }}">show</a>
+                    <a href="{{ path('app_admintrajet_edit', {'id': trajet.id}) }}">edit</a>
+                    <a href="{{ path('app_adminstop_new') }}" class="btn btn-primary">Ajouter Stop</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admintrajet_new') }}">Create new</a>
+{% endblock %}

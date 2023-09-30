@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magasin index{% endblock %}
+
+{% block body %}
+    <h1>Magasin index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TypeMagasin</th>
+                <th>NomMagasin</th>
+                <th>NuméroMagasin</th>
+                <th>LiensMaps</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for magasin in magasins %}
+            <tr>
+                <td>{{ magasin.id }}</td>
+                <td>{{ magasin.typeMagasin }}</td>
+                <td>{{ magasin.nomMagasin }}</td>
+                <td>{{ magasin.numeroMagasin }}</td>
+                <td>{{ magasin.liensMaps }}</td>
+                <td>
+                    <a href="{{ path('app_adminmagasin_show', {'id': magasin.id}) }}">show</a>
+                    <a href="{{ path('app_adminmagasin_edit', {'id': magasin.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_adminmagasin_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<style>
+    /* Styles pour le formulaire */
+.form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour le bouton "Save" */
+.btn-primary {
+    background-color: #f5f5f5; /* Gris clair */
+    color: #333; /* Couleur de texte sombre */
+    border: none;
+    border-radius: 20px; /* Coin arrondi */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.btn-primary:hover {
+    background-color: #ddd; /* Gris plus foncé au survol */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style pour les champs de formulaire */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: 2px solid #f5f5f5; /* Gris clair */
+    border-radius: 20px;
+    background-color: #fff; /* Blanc */
+    color: #333; /* Couleur de texte sombre */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+/* Style pour les étiquettes */
+label {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666; /* Gris moyen */
+}
+
+/* Style pour les messages d'erreur */
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Style pour le texte sous le formulaire */
+.footer-text {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #ccc; /* Gris clair */
+}
+
+/* Style pour les liens sous le formulaire */
+.footer-text a {
+    text-decoration: none;
+    color: #1161ed; /* Bleu */
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.footer-text a:hover {
+    color: #4082f5; /* Bleu foncé au survol */
+}
+
+</style>
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+</form>
+{% endblock %}

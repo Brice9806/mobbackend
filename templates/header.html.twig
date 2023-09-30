@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}T-Fast{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Ajoutez ici d'autres liens CSS, scripts JavaScript, etc. -->
+
+    <!-- Styles CSS personnalisés -->
+    <style>
+        /* Styles pour la barre de navigation (header) */
+        .navbar-custom {
+            background-color: #fff; /* Couleur de fond du header en blanc */
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Ombre légère */
+            width: 100%; /* Occupe toute la largeur de l'écran */
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #000; /* Couleur du texte du header en noir */
+        }
+        .navbar-custom .nav-link:hover {
+            color: #333; /* Couleur du texte du header au survol */
+        }
+        .navbar-custom .navbar-toggler-icon {
+            background-color: #000; /* Couleur de l'icône du bouton de navigation mobile en noir */
+        }
+        .navbar-custom .navbar-toggler {
+            border-color: #000; /* Couleur de la bordure du bouton de navigation mobile en noir */
+        }
+        .navbar-custom .navbar-toggler:focus,
+        .navbar-custom .navbar-toggler:hover {
+            background-color: #000; /* Couleur de fond au survol ou au focus du bouton de navigation mobile en noir */
+        }
+        .navbar-custom .navbar-collapse {
+            background-color: #fff; /* Couleur de fond du menu déroulant en blanc */
+        }
+        .navbar-custom .navbar-nav .nav-item {
+            padding: 0.5rem 1rem; /* Espacement des éléments du menu */
+        }
+        .navbar-custom .navbar-nav .nav-item .nav-link {
+            padding: 0.2rem 1rem; /* Espacement des liens du menu */
+        }
+        .navbar-custom .navbar-nav .nav-item .nav-link:hover {
+            background-color: #eee; /* Couleur de fond au survol des liens du menu */
+        }
+
+        /* Styles pour le contenu de la page */
+        .container-custom {
+            margin-top: 20px; /* Marge supérieure pour le contenu de la page */
+        }
+    </style>
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <p><h1 style="color: #000;" ><b>T-Fast</b>         </h1>   .</p>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_trajet_index') }}">Liste des Trajets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_trajet_new') }}">Créer un Trajet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_user_new') }}">Créer Utilisateur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_user_index') }}">Liste des Utilisateurs</a>
+                    </li>
+                    <!-- Ajoutez ici d'autres liens de navigation selon vos besoins -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenu de la page -->
+    <div class="container container-custom">
+        {% block body %}{% endblock %}
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Ajoutez ici d'autres scripts JavaScript personnalisés si nécessaire -->
+
+    <script>
+        // Activer le menu déroulant mobile
+        $(document).ready(function () {
+            $('.navbar-toggler').on('click', function () {
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

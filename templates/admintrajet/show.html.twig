@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trajet{% endblock %}
+
+{% block body %}
+    <h1>Trajet</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ trajet.id }}</td>
+            </tr>
+            <tr>
+                <th>VilleDepart</th>
+                <td>{{ trajet.villeDepart }}</td>
+            </tr>
+            <tr>
+                <th>VilleArrive</th>
+                <td>{{ trajet.villeArrive }}</td>
+            </tr>
+            <tr>
+                <th>DateDepart</th>
+                <td>{{ trajet.dateDepart ? trajet.dateDepart|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateArrive</th>
+                <td>{{ trajet.dateArrive ? trajet.dateArrive|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureDepart</th>
+                <td>{{ trajet.heureDepart ? trajet.heureDepart|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureArrive</th>
+                <td>{{ trajet.heureArrive ? trajet.heureArrive|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>TypeBus</th>
+                <td>{{ trajet.typeBus }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admintrajet_index') }}">back to list</a>
+
+    <a href="{{ path('app_admintrajet_edit', {'id': trajet.id}) }}">edit</a>
+
+    {{ include('admintrajet/_delete_form.html.twig') }}
+{% endblock %}

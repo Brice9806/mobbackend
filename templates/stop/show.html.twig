@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stop{% endblock %}
+
+{% block body %}
+<style>
+        /* Styles pour la page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Styles pour le titre */
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin: 20px 0;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* Styles pour la table */
+        table {
+            width: 90%;
+            max-width: 600px;
+            background-color: #fff;
+            border-collapse: collapse;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #27A462;
+            color: #fff;
+        }
+
+        table td {
+            background-color: #f9f9f9;
+        }
+
+        /* Styles pour les liens */
+        a {
+            text-decoration: none;
+            padding: 8px 16px;
+            background-color: #27A462;
+            color: #fff;
+            border-radius: 4px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        a:hover {
+            background-color: yellow;
+        }
+
+        /* Styles pour le formulaire de suppression */
+        .delete-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <h1>Stop</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ stop.id }}</td>
+            </tr>
+            <tr>
+                <th>VilleStop</th>
+                <td>{{ stop.villeStop }}</td>
+            </tr>
+            <tr>
+                <th>TempsStop</th>
+                <td>{{ stop.tempsStop }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_stop_index') }}">back to list</a>
+
+    <a href="{{ path('app_stop_edit', {'id': stop.id}) }}">edit</a>
+
+    {{ include('stop/_delete_form.html.twig') }}
+{% endblock %}

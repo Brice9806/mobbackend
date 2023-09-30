@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stop index{% endblock %}
+
+{% block body %}
+    <h1>Stop index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>VilleStop</th>
+                <th>TempsStop</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stop in stops %}
+            <tr>
+                <td>{{ stop.id }}</td>
+                <td>{{ stop.villeStop }}</td>
+                <td>{{ stop.tempsStop }} minute</td>
+                <td>
+                    <a href="{{ path('app_adminstop_show', {'id': stop.id}) }}">show</a>
+                    <a href="{{ path('app_adminstop_edit', {'id': stop.id}) }}">edit</a>
+                    <a href="{{ path('app_adminmagasin_new') }}" class="btn btn-primary">Ajouter Magasin</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_adminstop_new') }}">Create new</a>
+{% endblock %}

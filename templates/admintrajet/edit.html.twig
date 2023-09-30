@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Trajet{% endblock %}
+
+{% block body %}
+    <h1>Edit Trajet</h1>
+
+    {{ include('admintrajet/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_admintrajet_index') }}">back to list</a>
+
+    {{ include('admintrajet/_delete_form.html.twig') }}
+{% endblock %}
